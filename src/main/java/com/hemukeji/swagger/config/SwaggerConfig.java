@@ -8,5 +8,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2   //开启Swagger2
 public class SwaggerConfig {
 
+    //http://localhost:8080/swagger-ui.html
+
 
 }
