@@ -15,22 +15,21 @@ public class HelloController {
     public String hello(){
         return "hello";
     }
-
     //只要接口返回值存在实体类，就会被扫描到Swagger中
     @PostMapping(value = "/user")
     public User user(){
        return new User();
     }
 
-
-
     @ApiOperation("Hello控制类")
     @GetMapping(value = "/hello2")
-    public String hello(@ApiParam("用户名") String username){
-        return "hello2"+username;
+    public String hello2(@ApiParam("用户名") String username){
+        return "hello"+username;
     }
 
-
-
-
+    @ApiOperation("Post测试类")
+    @GetMapping(value = "/postt")
+    public User postt(@ApiParam("用户名") User user){
+        return user;
+    }
 }
