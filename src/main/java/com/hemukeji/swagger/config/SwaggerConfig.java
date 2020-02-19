@@ -20,27 +20,95 @@ public class SwaggerConfig {
 
 
     @Bean
-    public  Docket docket1(){
+    public  Docket docket1(Environment environment){
 
-        return new Docket(DocumentationType.SWAGGER_2).groupName("销售部");
+        //设置要显示的Swagger环境
+        Profiles profiles =Profiles.of("dev","test");
+        //获取项目的环境:
+//        通过enviroment.acceptsProfiles判断是否处在自己设置的环境当中
+        boolean flag = environment.acceptsProfiles(profiles);
+        System.out.println(flag);
+
+
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("程序员A")
+                .enable(flag)   //是否启动Swagger
+                .select()
+                //RequestHandlerSelectors配置要扫描接口的方式
+                .apis(RequestHandlerSelectors.basePackage("com.hemukeji.swagger.controller"))
+                //过滤路径
+                //.paths(PathSelectors.ant("/hemukeji/**"))
+                .build();
     }
 
     @Bean
-    public  Docket docket2(){
+    public  Docket docket2(Environment environment){
 
-        return new Docket(DocumentationType.SWAGGER_2).groupName("行政部");
+        //设置要显示的Swagger环境
+        Profiles profiles =Profiles.of("dev","test");
+        //获取项目的环境:
+//        通过enviroment.acceptsProfiles判断是否处在自己设置的环境当中
+        boolean flag = environment.acceptsProfiles(profiles);
+        System.out.println(flag);
+
+
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("程序员B")
+                .enable(flag)   //是否启动Swagger
+                .select()
+                //RequestHandlerSelectors配置要扫描接口的方式
+                .apis(RequestHandlerSelectors.basePackage("com.hemukeji.swagger.controller"))
+                //过滤路径
+                //.paths(PathSelectors.ant("/hemukeji/**"))
+                .build();
     }
 
     @Bean
-    public  Docket docket3(){
+    public  Docket docket3(Environment environment){
 
-        return new Docket(DocumentationType.SWAGGER_2).groupName("综合部");
+        //设置要显示的Swagger环境
+        Profiles profiles =Profiles.of("dev","test");
+        //获取项目的环境:
+//        通过enviroment.acceptsProfiles判断是否处在自己设置的环境当中
+        boolean flag = environment.acceptsProfiles(profiles);
+        System.out.println(flag);
+
+
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("程序员C")
+                .enable(flag)   //是否启动Swagger
+                .select()
+                //RequestHandlerSelectors配置要扫描接口的方式
+                .apis(RequestHandlerSelectors.basePackage("com.hemukeji.swagger.controller"))
+                //过滤路径
+                //.paths(PathSelectors.ant("/hemukeji/**"))
+                .build();
     }
 
     @Bean
-    public  Docket docket4(){
+    public  Docket docket4(Environment environment){
 
-        return new Docket(DocumentationType.SWAGGER_2).groupName("生产部");
+        //设置要显示的Swagger环境
+        Profiles profiles =Profiles.of("dev","test");
+        //获取项目的环境:
+//        通过enviroment.acceptsProfiles判断是否处在自己设置的环境当中
+        boolean flag = environment.acceptsProfiles(profiles);
+        System.out.println(flag);
+
+
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("程序员D")
+                .enable(flag)   //是否启动Swagger
+                .select()
+                //RequestHandlerSelectors配置要扫描接口的方式
+                .apis(RequestHandlerSelectors.basePackage("com.hemukeji.swagger.controller"))
+                //过滤路径
+                //.paths(PathSelectors.ant("/hemukeji/**"))
+                .build();
     }
 
 
@@ -63,7 +131,7 @@ public class SwaggerConfig {
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .groupName("技术部")
+                .groupName("程序员E")
                 .enable(flag)   //是否启动Swagger
                 .select()
                 //RequestHandlerSelectors配置要扫描接口的方式
@@ -78,7 +146,7 @@ public class SwaggerConfig {
 
         //作者信息
         Contact contact = new Contact("胡金龙", "https://space.bilibili.com/83520869", "18710360575@163.com");
-        return new ApiInfo("胡金龙的SwaggerAPI文档",
+        return new ApiInfo("SwaggerAPI文档",
                 "人生没有后悔药，做最好的自己",
                 "v1.0",
                 "https://space.bilibili.com/83520869",

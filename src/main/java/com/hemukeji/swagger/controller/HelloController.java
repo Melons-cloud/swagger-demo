@@ -29,7 +29,13 @@ public class HelloController {
 
     @ApiOperation("Post测试类")
     @GetMapping(value = "/postt")
-    public User postt(@ApiParam("用户名") User user){
+    public User postt1(@ApiParam("用户名") User user){
         return user;
+    }
+
+    @ApiOperation("Hello控制类")
+    @GetMapping(value = "/hello3")
+    public String hello3(@ApiParam("密码") String password){
+        return "hello"+password;
     }
 }
