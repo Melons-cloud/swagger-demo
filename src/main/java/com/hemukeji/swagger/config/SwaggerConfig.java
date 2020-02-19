@@ -14,10 +14,37 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
-
 @Configuration
 @EnableSwagger2   //开启Swagger2
 public class SwaggerConfig {
+
+
+    @Bean
+    public  Docket docket1(){
+
+        return new Docket(DocumentationType.SWAGGER_2).groupName("销售部");
+    }
+
+    @Bean
+    public  Docket docket2(){
+
+        return new Docket(DocumentationType.SWAGGER_2).groupName("行政部");
+    }
+
+    @Bean
+    public  Docket docket3(){
+
+        return new Docket(DocumentationType.SWAGGER_2).groupName("综合部");
+    }
+
+    @Bean
+    public  Docket docket4(){
+
+        return new Docket(DocumentationType.SWAGGER_2).groupName("生产部");
+    }
+
+
+
 
     //http://localhost:8080/swagger-ui.html
 
@@ -36,6 +63,7 @@ public class SwaggerConfig {
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
+                .groupName("技术部")
                 .enable(flag)   //是否启动Swagger
                 .select()
                 //RequestHandlerSelectors配置要扫描接口的方式
