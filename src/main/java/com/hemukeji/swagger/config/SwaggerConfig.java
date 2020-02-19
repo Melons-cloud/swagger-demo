@@ -3,6 +3,10 @@ package com.hemukeji.swagger.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
@@ -19,10 +23,26 @@ public class SwaggerConfig {
 
     //配置了Swagger的Docket的bean实例
     @Bean
-    public Docket docket(){
+    public Docket docket(Environment environment){
+
+
+        //设置要显示的Swagger环境
+        Profiles profiles =Profiles.of("dev","test");
+        //获取项目的环境:
+//        通过enviroment.acceptsProfiles判断是否处在自己设置的环境当中
+        boolean flag = environment.acceptsProfiles(profiles);
+        System.out.println(flag);
+
 
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo());
+                .apiInfo(apiInfo())
+                .enable(flag)   //是否启动Swagger
+                .select()
+                //RequestHandlerSelectors配置要扫描接口的方式
+                .apis(RequestHandlerSelectors.basePackage("com.hemukeji.swagger.controller"))
+                //过滤路径
+                //.paths(PathSelectors.ant("/hemukeji/**"))
+                .build();
     }
 
     private ApiInfo apiInfo(){
