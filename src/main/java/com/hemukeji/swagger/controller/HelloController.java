@@ -26,16 +26,20 @@ public class HelloController {
     public String hello2(@ApiParam("用户名") String username){
         return "hello"+username;
     }
-
-    @ApiOperation("Post测试类")
-    @GetMapping(value = "/postt")
-    public User postt1(@ApiParam("用户名") User user){
-        return user;
-    }
-
     @ApiOperation("Hello控制类")
     @GetMapping(value = "/hello3")
     public String hello3(@ApiParam("密码") String password){
         return "hello"+password;
     }
+    @ApiOperation("Post测试类")
+    @GetMapping(value = "/postt1")
+    public User postt1(@ApiParam("用户名") User username){
+        return username;
+    }
+    @ApiOperation("Post测试类")
+    @GetMapping(value = "/postt2")
+    public User postt2(@ApiParam("密码") User password){
+        return password;
+    }
+
 }
